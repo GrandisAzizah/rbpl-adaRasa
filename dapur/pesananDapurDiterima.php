@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../functions.php';
 $menu = query("SELECT * FROM pesanan ORDER BY id_pesanan ASC");
 ?>
 
@@ -12,7 +12,7 @@ $menu = query("SELECT * FROM pesanan ORDER BY id_pesanan ASC");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <title>Page Pesanan Tim Dapur</title>
-    <link rel="stylesheet" href="pesanan.css">
+    <link rel="stylesheet" href="../pesanan.css">
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -177,7 +177,7 @@ $menu = query("SELECT * FROM pesanan ORDER BY id_pesanan ASC");
             <div class="row g-0">
                 <!-- Gambar -->
                 <div class="col-auto">
-                    <img src="rbpl-nasi-kuning.png" class="card-img-top" alt="..." style="width: 100px; height: 100px; padding: 10px;">
+                    <img src="../rbpl-nasi-kuning.png" class="card-img-top" alt="..." style="width: 100px; height: 100px; padding: 10px;">
                 </div>
 
                 <!-- Nama Pemesan dan detail lainnya -->
@@ -222,7 +222,7 @@ $menu = query("SELECT * FROM pesanan ORDER BY id_pesanan ASC");
                     </svg>
 
                 </a>
-            </li> 
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="pengaturanDapur.php"><svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M25.3958 30.9165C34.5383 30.9165 41.9583 34.3836 41.9583 38.6457V44.1665H8.83333V38.6457C8.83333 34.3836 16.2533 30.9165 25.3958 30.9165ZM39.75 38.6457C39.75 35.5982 33.3237 33.1248 25.3958 33.1248C17.4679 33.1248 11.0417 35.5982 11.0417 38.6457V41.9582H39.75V38.6457ZM25.3958 11.0415C27.4457 11.0415 29.4117 11.8558 30.8612 13.3053C32.3107 14.7548 33.125 16.7208 33.125 18.7707C33.125 20.8206 32.3107 22.7865 30.8612 24.236C29.4117 25.6855 27.4457 26.4998 25.3958 26.4998C23.3459 26.4998 21.38 25.6855 19.9305 24.236C18.481 22.7865 17.6667 20.8206 17.6667 18.7707C17.6667 16.7208 18.481 14.7548 19.9305 13.3053C21.38 11.8558 23.3459 11.0415 25.3958 11.0415ZM25.3958 13.2498C23.9316 13.2498 22.5274 13.8315 21.492 14.8669C20.4567 15.9022 19.875 17.3065 19.875 18.7707C19.875 20.2349 20.4567 21.6391 21.492 22.6745C22.5274 23.7098 23.9316 24.2915 25.3958 24.2915C26.86 24.2915 28.2643 23.7098 29.2996 22.6745C30.335 21.6391 30.9167 20.2349 30.9167 18.7707C30.9167 17.3065 30.335 15.9022 29.2996 14.8669C28.2643 13.8315 26.86 13.2498 25.3958 13.2498Z" fill="black" />

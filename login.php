@@ -21,9 +21,9 @@ if (isset($_COOKIE['k']) && isset($_COOKIE['x'])) {
 // cek apakah sudah login ga usah balik ke login
 if (isset($_SESSION["login"])) {
     if ($_SESSION['role'] == 'admin') {
-        header("location:berandaAdmin.php");
+        header("location:admin/berandaAdmin.php");
     } else if ($_SESSION['role'] == 'tim dapur') {
-        header("location:pesananDapurDiterima.php");
+        header("location:dapur/pesananDapurDiterima.php");
     } else if ($_SESSION['role'] == 'tim pengantaran') {
         header("location:pengantaranDtterima.php");
     }

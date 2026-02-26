@@ -2,14 +2,20 @@
 session_start();
 require 'functions.php';
 
-if (isset($_POST["gantiPassword"])) {
-    $password = $_POST["password"];
-    $result = mysqli_query($conn, "SELECT password FROM 
-    user WHERE password = '$password'");
+if (isset($_POST["reset"])) {
+    $username = $_SESSION['username']; // pastiin session username tersimpan saat login
+    $password_lama = $_POST["password_lama"];
+    $password_baru = $_POST["password_baru"];
 
-    // cek email ada di database apa enggak
-    if (!mysqli_fetch_assoc($result)) {
-        return false; // agar insert tidak terjadi
+    $result = mysqli_query($conn, "SELECT password FROM 
+    user WHERE username = '$username'");
+
+   if (password_verify($password_lama, $row['password'])) {
+        $hash_baru = password_hash($password_baru, PASSWORD_DEFAULT);
+        mysqli_query($conn, "UPDATE user SET password = '$hash_baru' WHERE username = '$username'");
+        echo "<script>alert('Password berhasil diubah')</script>";
+    } else {
+        echo "<script>alert('Password lama salah')</script>";
     }
 }
 ?>
@@ -65,12 +71,16 @@ if (isset($_POST["gantiPassword"])) {
     .menu-item {
         display: flex;
         align-items: center;
-        padding: 0px;
+        gap: 8px;
     }
 
     .menu-item .icon {
         flex-shrink: 0;
         width: 24px;
+    }
+
+    h5 {
+        margin: 0;
     }
 </style>
 
@@ -95,12 +105,12 @@ if (isset($_POST["gantiPassword"])) {
             <form action="" method="POST">
 
                 <label for="password">Password Lama</label><br>
-                <input type="password" id="password" name="password" required><br>
+                <input type="password" id="password_lama" name="password_lama" required><br>
 
                 <label for="password">Password Baru</label><br>
-                <input type="password" id="password" name="password" required><br>
+                <input type="password" id="password_baru" name="password_baru" required><br>
 
-                <button type="submit" class="btn btn-dark mt-3" name="gantiPassword">Save</button>
+                <button type="submit" class="btn btn-dark mt-3" name="reset">Save</button>
             </form>
         </div>
     </div>
