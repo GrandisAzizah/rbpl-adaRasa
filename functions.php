@@ -20,9 +20,8 @@ function registrasi($data)
     global $conn;
 
     // stripslashes untuk backslash dll biar ga masuk ke database
-    // strtolower agar input jadi huruf kecil karena biasanya username ga case sensitive
     // htmlspecialchar untuk mastiin user ga input yang aneh2
-    $username = htmlspecialchars(strtolower(stripslashes($data["username"])));
+    $username = htmlspecialchars(stripslashes($data["username"]));
     // mysqli_real_escape_string memungkinkan user input password dengan tanda kutip
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
@@ -65,6 +64,23 @@ function ganti_pw($data)
     $query = "UPDATE user SET password = ? WHERE password = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "ss", $passwordNew, $password);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // jika gagal -1, jika berhasil 1
+    return mysqli_stmt_affected_rows($stmt);
+}
+
+function ganti_usn($data)
+{
+    global $conn;
+
+    $username = htmlspecialchars($data['username']);
+    $usernameNew = htmlspecialchars($data['usernameNew']);
+
+    $query = "UPDATE user SET username = ? WHERE username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $usernameNew, $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
