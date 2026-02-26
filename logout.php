@@ -6,5 +6,5 @@ session_destroy();
 
 setcookie('k', '', time() - 3600);
 setcookie('x', '', time() - 3600);
-header("location: login.php");
+header("location:../logout.php");
 exit;
