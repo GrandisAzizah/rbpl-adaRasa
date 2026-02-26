@@ -9,8 +9,9 @@ if (isset($_POST["reset"])) {
 
     $result = mysqli_query($conn, "SELECT password FROM 
     user WHERE username = '$username'");
+    $row = mysqli_fetch_assoc($result);
 
-   if (password_verify($password_lama, $row['password'])) {
+    if (password_verify($password_lama, $row['password'])) {
         $hash_baru = password_hash($password_baru, PASSWORD_DEFAULT);
         mysqli_query($conn, "UPDATE user SET password = '$hash_baru' WHERE username = '$username'");
         echo "<script>alert('Password berhasil diubah')</script>";

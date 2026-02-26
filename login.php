@@ -58,13 +58,14 @@ if (isset($_POST["login"])) {
                 // set session
                 $_SESSION["login"] = true;
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['username'] = $row['username']; // pastiin session username tersimpan saat login
 
                 if ($row['role'] == 'admin') {
-                    header("location:berandaAdmin.php");
+                    header("location:admin/berandaAdmin.php");
                 } else if ($row['role'] == 'tim dapur') {
-                    header("location:pesananDapurDiterima.php");
+                    header("location:dapur/pesananDapurDiterima.php");
                 } else if ($row['role'] == 'tim pengantaran') {
-                    header("location:pengantaranDiterima.php");
+                    header("location:pengantaran/pengantaranDiterima.php");
                 }
                 exit;
 
