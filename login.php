@@ -138,6 +138,9 @@ if (isset($_POST["login"])) {
 </style>
 
 <body>
+    <?php if (isset($error)) { ?>
+        <p style="color: red; text-align: center; margin-top: 10px;">Username atau password salah!</p>
+    <?php } ?>
     <div class="container">
         <form action="" method="POST">
             <label for="username">Username</label><br>
@@ -149,6 +152,7 @@ if (isset($_POST["login"])) {
             <button type="submit" value="login" class="btn btn-dark" name="login">Login</button>
         </form>
     </div>
+
 </body>
 
 </html>
