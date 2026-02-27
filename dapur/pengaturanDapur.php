@@ -127,13 +127,13 @@ session_start();
         </div>
 
         <div class="menu-item">
-            <a href="logout.php">
+            <a href="../logout.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon">
                     <path d="M13.496 21H6.5C5.395 21 4.5 19.849 4.5 18.429V5.57C4.5 4.151 5.395 3 6.5 3H13.5M16 15.5L19.5 12L16 8.5M9.5 11.996H19.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </a>
-            <span class="label"><a href="logout.php">Log out</a></span>
-            <a href="logout.php">
+            <span class="label"><a href="../logout.php">Log out</a></span>
+            <a href="../logout.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" fill="none" class="arrow-icon">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.1569 12.7111L4.49994 18.3681L3.08594 16.9541L8.03594 12.0041L3.08594 7.05414L4.49994 5.64014L10.1569 11.2971C10.3444 11.4847 10.4497 11.739 10.4497 12.0041C10.4497 12.2693 10.3444 12.5236 10.1569 12.7111Z" fill="black" />
                 </svg>
