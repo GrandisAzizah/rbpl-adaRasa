@@ -25,6 +25,7 @@ function registrasi($data)
     // mysqli_real_escape_string memungkinkan user input password dengan tanda kutip
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+    $no_hp = htmlspecialchars(stripslashes($data["no_hp"]));
 
     // cek apakah username udah ada
     $result = mysqli_query($conn, "SELECT username FROM 
@@ -49,7 +50,7 @@ function registrasi($data)
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // tambahkan userbaru ke database
-    mysqli_query($conn, "INSERT INTO user (username, password, role) VALUES ('$username', '$password', 'user')");
+    mysqli_query($conn, "INSERT INTO user (username, password, no_hp, role) VALUES ('$username', '$password', '$no_hp', 'user')");
 
     return mysqli_affected_rows($conn);
 }
@@ -58,12 +59,12 @@ function ganti_pw($data)
 {
     global $conn;
 
-    $password = htmlspecialchars($data['password']);
+    $no_hp = htmlspecialchars($data['no_hp']);
     $passwordNew = password_hash($data['passwordNew'], PASSWORD_DEFAULT);
 
-    $query = "UPDATE user SET password = ? WHERE password = ?";
+    $query = "UPDATE user SET password = ? WHERE no_hp = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $passwordNew, $password);
+    mysqli_stmt_bind_param($stmt, "ss", $passwordNew, $no_hp);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
@@ -75,12 +76,12 @@ function ganti_usn($data)
 {
     global $conn;
 
-    $username = htmlspecialchars($data['username']);
+    $no_hp = htmlspecialchars($data['no_hp']);
     $usernameNew = htmlspecialchars($data['usernameNew']);
 
-    $query = "UPDATE user SET username = ? WHERE username = ?";
+    $query = "UPDATE user SET username = ? WHERE no_hp = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $usernameNew, $username);
+    mysqli_stmt_bind_param($stmt, "ss", $usernameNew, $no_hp);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
