@@ -1,0 +1,64 @@
+body {
+    font-family: 'Aleo', serif !important;
+}
+
+.container-main {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header-nav-left {
+    position: absolute;
+    left: 0;
+    display: flex;
+}
+
+.header-nav-right {
+    position: absolute;
+    right: 0;
+    display: flex;
+}
+
+.header-nav-title {
+    margin: 0;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 3px;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 8px !important;
+    padding-bottom: 0px !important;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 2px;
+}
+
+.card-text {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 0px !important;
+}
+
+button {
+    width: 70px !important;
+    height: 30px;
+}
