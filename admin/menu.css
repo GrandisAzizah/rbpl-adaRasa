@@ -16,7 +16,7 @@ body {
 }
 
 .header-nav-left {
-    position: absolute;
+    position: absolute !important;
     left: 0;
     display: flex;
 }
@@ -25,6 +25,11 @@ body {
     position: absolute;
     right: 0;
     display: flex;
+}
+
+.header-nav-right.dropdown {
+    position: absolute !important;
+    right: 0;
 }
 
 .header-nav-title {
