@@ -41,57 +41,58 @@ $menu = query("SELECT * FROM menu ORDER BY nama_menu ASC");
             </a>
         </div>
 
-
         <?php if (count($menu) == 0) : ?>
             <p class="text-center mt-5" style="color: #979696; margin-top: 20px; height: 70vh; display: flex; align-items: center; justify-content: center;"">Belum ada menu yang ditambahkan</p>
         <?php else : ?>
             <?php foreach ($menu as $row) : ?>
-                <div class=" container-menu mt-4">
-            <div class="card">
-                <div class="row g-0">
-                    <!-- Gambar -->
-                    <div class="col-auto">
-                        <img src="<?= $row['gambar_menu'] ?>" class="menu-img" alt="...">
-                    </div>
-                    <!-- Isi -->
-                    <div class="col">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $row['nama_menu'] ?></h5>
-                            <p class="card-text"><?= $row['harga_menu'] ?></p>
+            <a href=" showBahan.php?id_menu=<?= $row['id_menu'] ?>" style="text-decoration:none; color:inherit; display:contents;">
+            <div class=" container-menu mt-4">
+                <div class="card">
+                    <div class="row g-0">
+                        <!-- Gambar -->
+                        <div class="col-auto">
+                            <img src="<?= $row['gambar_menu'] ?>" class="menu-img" alt="...">
                         </div>
-                    </div>
-                    <!-- Tombol Edit dan Hapus -->
-                    <div class="col-auto menu-btn d-flex align-items-center gap-2 p-2 align-self-end">
-                        <a href="editMenu.php?id_menu=<?= $row['id_menu'] ?>" class="edit-btn btn btn-dark btn-sm">Edit</a>
-                        <a href="#" class="delete-btn btn btn-danger btn-sm" onclick="setHapusUrl('hapusMenu.php?id_menu=<?= $row['id_menu'] ?>')">Hapus</a>
+                        <!-- Isi -->
+                        <div class="col">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $row['nama_menu'] ?></h5>
+                                <p class="card-text"><?= $row['harga_menu'] ?></p>
+                            </div>
+                        </div>
+                        </a>
+                        <!-- Tombol Edit dan Hapus -->
+                        <div class="col-auto menu-btn d-flex align-items-center gap-2 p-2 align-self-end">
+                            <a href="editMenu.php?id_menu=<?= $row['id_menu'] ?>" class="edit-btn btn btn-dark btn-sm">Edit</a>
+                            <a href="#" class="delete-btn btn btn-danger btn-sm" onclick="setHapusUrl('hapusMenu.php?id_menu=<?= $row['id_menu'] ?>')">Hapus</a>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-<?php endforeach; ?>
-<?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
-<!-- Modal Konfirmasi Hapus -->
-<div class="modal fade" id="modalHapus" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body text-center p-4">
-                <p>Yakin ingin menghapus menu ini?</p>
-                <div class="d-flex justify-content-center gap-3 mt-3">
-                    <button class="btn btn-dark" data-bs-dismiss="modal" style="width: auto !important; height: auto !important; padding: 6px 20px !important;">Tidak</button>
-                    <a id="btnYaHapus" href="#" class="btn btn-danger" style="width: auto !important; height: auto !important; padding: 6px 20px !important;">Ya</a>
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal fade" id="modalHapus" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-4">
+                    <p>Yakin ingin menghapus menu ini?</p>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <button class="btn btn-dark" data-bs-dismiss="modal" style="width: auto !important; height: auto !important; padding: 6px 20px !important;">Tidak</button>
+                        <a id="btnYaHapus" href="#" class="btn btn-danger" style="width: auto !important; height: auto !important; padding: 6px 20px !important;">Ya</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    function setHapusUrl(url) {
-        document.getElementById('btnYaHapus').href = url;
-        new bootstrap.Modal(document.getElementById('modalHapus')).show();
-    }
-</script>
+    <script>
+        function setHapusUrl(url) {
+            document.getElementById('btnYaHapus').href = url;
+            new bootstrap.Modal(document.getElementById('modalHapus')).show();
+        }
+    </script>
 </body>
 
 </html>
