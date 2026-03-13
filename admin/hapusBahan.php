@@ -10,10 +10,11 @@ if (!isset($_SESSION["login"])) {
 require '../functions.php';
 // ambil id yang dikirim ketika tombol dipencet
 // id dikirim lewat url
-$id_menu = $_GET["id_bahan"];
+$id_bahan = $_GET["id_bahan"];
+$id_menu = $_GET["id_menu"];
 
-if (hapusBahan($id_menu) > 0) {
-    header("location: showBahan.php");
+if (hapusBahan($id_bahan) > 0) {
+    header("location: showBahan.php?id_menu=" . $id_menu);
 } else {
     echo "Data gagal dihapus";
     // menampilkan kenapa gagal
