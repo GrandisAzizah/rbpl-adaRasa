@@ -15,8 +15,10 @@ $daftar_menu = query("SELECT id_menu, nama_menu FROM menu ORDER BY nama_menu ASC
 // alert jika input berhasil atau gagal
 $pesan = '';
 $tipe = '';
+
+$id_dari_url = $_POST['id_menu'] ?? $_GET['id_menu'] ?? '';
 if (isset($_POST["submit"])) {
-    $hasil = tambah($_POST);
+    $hasil = tambahBahanBaku($_POST);
     if ($hasil > 0) {
         $pesan = 'Data bahan baku berhasil ditambahkan!';
         $tipe = 'success';
@@ -131,7 +133,7 @@ if (isset($_POST["submit"])) {
 <body>
     <div>
         <div style="display: flex; align-items: center; justify-content: center; position: relative;" class="mb-3">
-            <a href="showBahan.php" style="position: absolute; left: 0; flex-shrink: 0;">
+            <a href="showBahan.php?id_menu=<?= $id_dari_url ?>" style="position: absolute; left: 0; flex-shrink: 0;">
                 <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M31.6667 19H6.33337M6.33337 19L15.8334 9.5M6.33337 19L15.8334 28.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -139,6 +141,7 @@ if (isset($_POST["submit"])) {
             <h5 style="margin: 0;">Tambah Bahan Baku</h5>
         </div>
 
+        <!-- ALERT -->
         <?php if ($pesan): ?>
             <div class="mt-3 mb-3 alert alert- <?= $tipe ?> alert-dismissible fade show" role="alert">
                 <?= $pesan ?>
@@ -146,12 +149,11 @@ if (isset($_POST["submit"])) {
             </div>
         <?php endif; ?>
         <div class="container">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST">
 
                 <!-- INPUT NAMA MENU -->
                 <label for="fk_menu">Nama Menu</label><br>
                 <?php
-                $id_dari_url = $_GET['id_menu'] ?? '';
                 $nama_dari_url = '';
                 foreach ($daftar_menu as $m) {
                     if ($m['id_menu'] == $id_dari_url) {
@@ -161,12 +163,13 @@ if (isset($_POST["submit"])) {
                 }
                 ?>
 
+                <input type="hidden" name="id_menu" value="<?= $id_dari_url ?>">
                 <input type="hidden" name="fk_menu" value="<?= $id_dari_url ?>">
                 <input type="text" value="<?= $nama_dari_url ?>" disabled><br><br>
 
                 <!-- INPUT NAMA MENU -->
-                <label for="nama-bahan-baku">Nama Bahan Baku <br></label>
-                <input type="text" name="nama-bahan-baku" id="nama-bahan-baku" maxlength="30" required><br><br>
+                <label for="nama_bahan">Nama Bahan Baku <br></label>
+                <input type="text" name="nama_bahan" id="nama_bahan" maxlength="30" required><br><br>
 
                 <!-- INPUT JUMLAH -->
                 <label for="jumlah">Jumlah:<br></label>
