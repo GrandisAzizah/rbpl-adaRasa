@@ -256,3 +256,64 @@ function editBahan($data)
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
+
+function tambahPesanan($data)
+{
+    global $conn;
+    $nama_pelanggan = htmlspecialchars($data['nama_pelanggan']);
+    $fk_menu = htmlspecialchars($data['fk_menu']);
+    $porsi = htmlspecialchars($data['porsi']);
+    $harga_menu = htmlspecialchars($data['harga_menu']);
+    $harga_total = htmlspecialchars($data['harga_menu']) * htmlspecialchars($data['porsi']);
+    $status_pemesanan = htmlspecialchars($data['status_pemesanan']);
+    $tanggal_pesan = htmlspecialchars($data['tanggal_pesan']);
+    $catatan_khusus_pemesanan = htmlspecialchars($data['catatan_khusus_pemesanan']);
+    $tanggal_antar = htmlspecialchars($data['tanggal_antar']);
+
+    $query = "INSERT INTO pesanan VALUES
+            (NULL, '$fk_menu', '$porsi','$harga_total', $harga_menu','$status_pemesanan',
+            '$tanggal_pesan','$catatan_khusus_pemesanan',
+            '$tanggal_antar')
+    ";
+
+    mysqli_query($conn, $query);
+
+    // jika gagal -1, jika berhasil 1
+    return mysqli_affected_rows($conn);
+}
+
+function hapusPesanan($id_pesanan)
+{
+    global $conn;
+    mysqli_query($conn, "DELETE FROM pesanan WHERE id_pesanan = $id_pesanan");
+    return mysqli_affected_rows($conn);
+}
+
+function editPesanan($data)
+{
+    global $conn;
+
+    $id_pesanan = htmlspecialchars($data['id_pesanan']);
+    $nama_pelanggan = htmlspecialchars($data['nama_pelanggan']);
+    $fk_menu = htmlspecialchars($data['fk_menu']);
+    $porsi = htmlspecialchars($data['porsi']);
+    $harga_menu = htmlspecialchars($data['harga_menu']);
+    $harga_total = htmlspecialchars($data['harga_menu']) * htmlspecialchars($data['porsi']);
+    $status_pemesanan = htmlspecialchars($data['status_pemesanan']);
+    $tanggal_pesan = htmlspecialchars($data['tanggal_pesan']);
+    $catatan_khusus_pemesanan = htmlspecialchars($data['catatan_khusus_pemesanan']);
+    $tanggal_antar = htmlspecialchars($data['tanggal_antar']);
+
+    $query = "UPDATE pesanan SET
+               nama_pelanggan = '$nama_pelanggan',
+               porsi = '$porsi',
+               harga_menu = '$harga_menu',
+               status_pemesanan = '$status_pemesanan',
+               tanggal_pesan = '$tanggal_pesan',
+               catatan_khusus_pemesanan = '$catatan_khusus_pemesanan',
+               tanggal_antar = '$tanggal_antar'
+              WHERE id_pesanan = $id_pesanan";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
