@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+    pelanggan
 </body>
 
 </html>

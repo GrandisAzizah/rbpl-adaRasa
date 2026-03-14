@@ -1,0 +1,150 @@
+body {
+    font-family: 'Aleo', serif !important;
+}
+
+.container-main {
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+}
+
+.header-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    position: relative !important;
+    gap: 40px !important;
+}
+
+.header-nav-left {
+    display: flex !important;
+}
+
+.header-nav-right {
+    position: absolute !important;
+    right: 0 !important;
+    display: flex !important;
+}
+
+.header-nav-title {
+    margin: 0 !important;
+}
+
+.btn-nav {
+    margin-top: 20px;
+    outline: black solid 1px;
+    height: 60px;
+}
+
+.sort {
+    text-align: start;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 13px;
+}
+
+.card-order {
+    outline: black solid 1.2px;
+    margin: 20px auto;
+    border-radius: 5px;
+    width: 330px;
+    font-size: 13px !important;
+    height: 60px;
+}
+
+.card-order .row {
+    align-items: center !important;
+}
+
+.card-body {
+    padding: 3px;
+    margin-left: 10px;
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.card-text {
+    font-size: 12px;
+}
+
+.order-img {
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+    border-radius: 0 5px;
+}
+
+.order-img img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 0 5px 5px 0;
+    display: block;
+}
+
+.btn-group { 
+    display: flex;
+    position: absolute;
+    right: 0;
+    padding: 6px;
+    height: 45px;
+    margin-top: 7px;
+}
+
+.btn-outline-primary {
+    border-color: #79747E !important;
+    color: black !important;
+    background-color: #ffffff !important;
+    border-radius: 25px;
+    font-size: 13px !important;
+}
+.btn-check:checked + .btn-outline-primary {
+    background-color: #B4FDAF !important;
+    border-color: #79747E !important;
+    color: black !important;
+}
+
+
+.btn-outline-primary:hover {
+    background-color: #B4FDAF !important;
+    color: black !important;
+     border-color: #79747E !important;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-nav-input {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    position: relative !important;
+    gap: 25px !important;
+    margin-bottom: 20px;
+}
+
+input {
+    margin-bottom: 8px;
+}
+
+label {
+    margin-top: 8px;
+}
+
+select {
+    margin-bottom: 8px;
+}
+
+.input-next {
+    background-color: #ffffff;
+    outline: black;
+    color: #000000;
+    width: 200px;
+    justify-content: center !important;
+    align-items: center !important;
+}
