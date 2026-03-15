@@ -261,8 +261,10 @@ function tambahPesanan($data)
 {
     global $conn;
     $nama_pelanggan = htmlspecialchars($data['nama_pelanggan']);
-    $fk_menu = htmlspecialchars($data['fk_menu']);
+    $menu_fk = htmlspecialchars($data['menu_fk']);
     $porsi = htmlspecialchars($data['porsi']);
+    $takaran = htmlspecialchars($data['takaran']);
+    $packing = htmlspecialchars($data['packing']);
     $harga_menu = htmlspecialchars($data['harga_menu']);
     $harga_total = htmlspecialchars($data['harga_menu']) * htmlspecialchars($data['porsi']);
     $status_pemesanan = htmlspecialchars($data['status_pemesanan']);
@@ -271,9 +273,9 @@ function tambahPesanan($data)
     $tanggal_antar = htmlspecialchars($data['tanggal_antar']);
 
     $query = "INSERT INTO pesanan VALUES
-            (NULL, '$fk_menu', '$porsi','$harga_total', $harga_menu','$status_pemesanan',
+            (NULL, , '$porsi','$harga_total', $harga_menu','$status_pemesanan',
             '$tanggal_pesan','$catatan_khusus_pemesanan',
-            '$tanggal_antar')
+            '$tanggal_antar', '$menu_fk')
     ";
 
     mysqli_query($conn, $query);
@@ -317,3 +319,64 @@ function editPesanan($data)
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
+
+function upload_profil()
+{
+    $namaFile = $_FILES['profil-foto']['name'];
+    $ukuranFile = $_FILES['profil-foto']['size'];
+    $error = $_FILES['profil-foto']['error'];
+    $tmpName = $_FILES['profil-foto']['tmp_name'];
+
+    // cek apakah ada gambar yang diupload
+    if ($error == 4) {
+        echo "<script>alert('Silakan unggah foto profil terlebih dahulu.')</script>";
+        return false;
+    }
+
+    $ekstensiGambarValid = ['jpg', 'png', 'jpeg', 'webp'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script>alert('Silakan unggah gambar dengan format png, jpg, webp atau jpeg')</script>";
+        return false;
+    }
+
+    if ($ukuranFile > 5000000) {
+        echo "<script>alert('Ukuran gambar terlalu besar. Ukuran maksimal adalah 5 MB')</script>";
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.' . $ekstensiGambar;
+
+    move_uploaded_file($tmpName, '../img/' . $namaFileBaru);
+
+    return '/RBPL-AdaRasa/img/' . $namaFileBaru;
+}
+
+function tambahPelanggan($data)
+{
+    global $conn;
+    $nama = htmlspecialchars($data["nama"]);
+    $no_hp = htmlspecialchars($data["no_hp"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+    // upload gambar
+    $profil_foto = upload_profil();
+    if (!$profil_foto) {
+        return false; // insert tidak dijalankan
+    }
+
+    $query = "INSERT INTO customer VALUES
+            (NULL, '$nama', '$no_hp', '$alamat','$profil_foto')
+    ";
+
+    mysqli_query($conn, $query);
+
+    // jika gagal -1, jika berhasil 1
+    return mysqli_affected_rows($conn);
+}
+
+function editPelanggan($data) {}
+
+function hapusPelanggan($data) {}
