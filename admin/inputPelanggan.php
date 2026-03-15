@@ -13,7 +13,7 @@ require '../functions.php';
 $pesan = '';
 $tipe = '';
 if (isset($_POST["submit"])) {
-    $hasil = tambah($_POST);
+    $hasil = tambahPelanggan($_POST);
     if ($hasil > 0) {
         $pesan = 'Data berhasil ditambahkan!';
         $tipe = 'success';
@@ -128,7 +128,7 @@ if (isset($_POST["submit"])) {
 <body>
     <div>
         <div style="display: flex; align-items: center; justify-content: center; position: relative;" class="mb-3">
-            <a href="laporan.php" style="position: absolute; left: 0; flex-shrink: 0;">
+            <a href="pelanggan.php" style="position: absolute; left: 0; flex-shrink: 0;">
                 <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M31.6667 19H6.33337M6.33337 19L15.8334 9.5M6.33337 19L15.8334 28.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -146,22 +146,22 @@ if (isset($_POST["submit"])) {
             <form action="" method="POST" enctype="multipart/form-data">
 
                 <!-- INPUT NAMA MENU -->
-                <label for="username">Nama<br></label>
-                <input type="text" name="username" id="username" maxlength="30" required><br><br>
+                <label for="nama">Nama<br></label>
+                <input type="text" name="nama" id="nama" maxlength="30" required><br><br>
 
                 <!-- INPUT NO HP -->
-                <label for="no_hp">No HP<label>
-                        <input type="text" name="no_hp" id="no_hp" maxlength="15" required><br><br>
+                <label for="no_hp">No HP</label>
+                <input type="text" name="no_hp" id="no_hp" maxlength="15" required><br><br>
 
-                        <label for="alamat">Alamat<label>
-                                <input type="text" name="alamat" id="alamat" required><br><br>
+                <label for="alamat">Alamat</label>
+                <input type="text" name="alamat" id="alamat" required><br><br>
 
-                                <!-- INPUT GAMBAR -->
-                                <label for="profil-foto">Profil:<br></label>
-                                <input type="file" name="profil-foto" id="profil-foto" required><br><br>
+                <!-- INPUT GAMBAR -->
+                <label for="profil-foto">Profil:<br></label>
+                <input type="file" name="profil-foto" id="profil-foto" required><br><br>
 
-                                <!-- SUBMIT BUTTON -->
-                                <button type="submit" value="Kirim" name="submit" class="btn btn-dark mt-3">Kirim</button>
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" value="Kirim" name="submit" class="btn btn-dark">Kirim</button>
             </form>
         </div>
     </div>
