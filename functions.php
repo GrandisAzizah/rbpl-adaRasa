@@ -218,11 +218,11 @@ function tambahBahanBaku($data)
     global $conn;
     $fk_menu = htmlspecialchars($data['fk_menu']);
     $nama_bahan = htmlspecialchars($data['nama_bahan']);
-    $jumlah = htmlspecialchars($data['jumlah']);
+    $jumlah_default = htmlspecialchars($data['jumlah_default']);
     $satuan = htmlspecialchars($data['satuan']);
 
     $query = "INSERT INTO bahan_baku VALUES
-            (NULL, '$fk_menu', '$nama_bahan', '$jumlah', '$satuan')
+            (NULL, '$fk_menu', '$nama_bahan', '$jumlah_default', '$satuan')
     ";
 
     mysqli_query($conn, $query);
@@ -244,12 +244,12 @@ function editBahan($data)
 
     $id_bahan = $data["id_bahan"];
     $nama_bahan = htmlspecialchars($data['nama_bahan']);
-    $jumlah = htmlspecialchars($data['jumlah']);
+    $jumlah_default = htmlspecialchars($data['jumlah_default']);
     $satuan = htmlspecialchars($data['satuan']);
 
     $query = "UPDATE bahan_baku SET
                 nama_bahan = '$nama_bahan',
-                jumlah = '$jumlah',
+                jumlah_default = '$jumlah_default',
                 satuan = '$satuan'
               WHERE id_bahan = $id_bahan";
 

@@ -169,8 +169,8 @@ if (isset($_POST["submit"])) {
                 <input type="text" name="nama_bahan" id="nama_bahan" value="<?= $bahan['nama_bahan'] ?>" maxlength="40" required><br><br>
 
                 <!-- INPUT HARGA -->
-                <label for="jumlah">Jumlah:<br></label>
-                <input type="number" name="jumlah" id="jumlah" value="<?= $bahan['jumlah'] ?>" min="0" max="999999" required><br><br>
+                <label for="jumlah_default">Jumlah:<br></label>
+                <input type="number" name="jumlah_default" id="jumlah_default" value="<?= $bahan['jumlah_default'] ?>" min="0" max="999999" required><br><br>
 
                 <!-- INPUT SATUAN -->
                 <label for="satuan">Satuan</label><br>

@@ -172,8 +172,8 @@ if (isset($_POST["submit"])) {
                 <input type="text" name="nama_bahan" id="nama_bahan" maxlength="30" required><br><br>
 
                 <!-- INPUT JUMLAH -->
-                <label for="jumlah">Jumlah:<br></label>
-                <input type="number" name="jumlah" id="jumlah" min="0" max="999999" step="0.01" required><br><br>
+                <label for="jumlah_default">Jumlah<br></label>
+                <input type="number" name="jumlah_default" id="jumlah_default" min="0" max="999999" step="0.01" required><br><br>
 
                 <!-- INPUT SATUAN -->
                 <label for="satuan">Satuan</label><br>

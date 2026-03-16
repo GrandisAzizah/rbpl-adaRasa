@@ -56,7 +56,7 @@ $nama_menu = $menu[0]['nama_menu'];
                     <div class="col">
                         <div class="card-body">
                             <h5 class="card-title"><?= $row['nama_bahan'] ?></h5>
-                            <p class="card-text"><?= $row['jumlah'] . ' ' . $row['satuan'] ?></p>
+                            <p class="card-text"><?= $row['jumlah_default'] . ' ' . $row['satuan'] ?></p>
                         </div>
                     </div>
                     <!-- Tombol Edit dan Hapus -->
